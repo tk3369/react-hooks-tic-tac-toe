@@ -1,7 +1,7 @@
 import React from 'react';
 import Square from './square';
 
-export default function board() {
+export default function Board() {
 
   // The special syntax creates a range from 0..8
   // The map function is used to iterate over the array and create Square objects
