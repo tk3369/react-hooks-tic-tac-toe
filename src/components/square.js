@@ -5,12 +5,16 @@ import React, { useState } from 'react';
 export default function Square({index}) {
 
   // The `fill` state should be a string - 'X', 'O', or ''
-  const [ fill, setFill ] = useState(index.toString());
+  const [ fill, setFill ] = useState('');
+
+  const handleClick = () => {
+    setFill(index.toString());
+  };
 
   return (
     // key must be specified of else the Board component would complain
     // what to do when clicked?  need context -- who's current player.
-    <button key={index} className="square" onClick={() => setFill('')}>
+    <button key={index} className="square" onClick={handleClick}>
       {fill}
     </button>
   )
