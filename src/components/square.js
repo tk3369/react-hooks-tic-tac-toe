@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 // Construct a Square component with position `i`.
 // Note: React Hook function names MUST BE capitalized
-export default function Square({index, currentPlayer}) {
+export default function Square({index, currentPlayer, advance}) {
 
   // The `fill` state should be a string - 'X', 'O', or ''
   const [ fill, setFill ] = useState('');
 
   const handleClick = () => {
+    advance();
     setFill(currentPlayer);
   };
 
