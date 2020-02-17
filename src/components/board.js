@@ -5,12 +5,20 @@ export default function Board() {
 
   const [ currentPlayer, setCurrentPlayer ] = useState('X');
 
-  const advance = () => {
+  const advance = (index) => {
       setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X')
+      setHistory([...history, index]);
   }
+
+  const [ history, setHistory ] = useState([]);
 
   return (
     <div className="board">
+      <div className="info">
+        Current player: {currentPlayer}
+        <p></p>
+        History: {history.join(", ")} 
+      </div>
       <div className="board-row">
         <Square index="0" currentPlayer={currentPlayer} advance={advance} />
         <Square index="1" currentPlayer={currentPlayer} advance={advance} />

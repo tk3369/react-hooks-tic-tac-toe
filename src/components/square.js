@@ -8,7 +8,7 @@ export default function Square({index, currentPlayer, advance}) {
   const [ fill, setFill ] = useState('');
 
   const handleClick = () => {
-    advance();
+    advance(index);
     setFill(currentPlayer);
   };
 
