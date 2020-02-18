@@ -8,8 +8,10 @@ export default function Square({index, currentPlayer, advance}) {
   const [ fill, setFill ] = useState('');
 
   const handleClick = () => {
-    advance(index);
-    setFill(currentPlayer);
+    if (fill === '') {  // only if the box hasn't been filled
+      advance(index);
+      setFill(currentPlayer);
+    }
   };
 
   return (
