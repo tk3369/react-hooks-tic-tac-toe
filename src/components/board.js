@@ -6,10 +6,10 @@ export default function Board() {
   // currentPlayer is either 'X' or 'O'
   const [ currentPlayer, setCurrentPlayer ] = useState('X');
 
-  // winner
+  // winner is '', 'X', or 'O'
   const [ winner, setWinner ] = useState('');
 
-  // Keep track of every move
+  // Keep track of every move in an array
   const [ history, setHistory ] = useState([]);
 
   // Advance to the next step when a square was clicked
@@ -24,6 +24,7 @@ export default function Board() {
       .map(x => x.position);
     console.log(currentPlayerMoves);
 
+    // Either update `winner` or advance to the next player
     const won = playerHasWon(currentPlayerMoves);
     if (won) {
       console.log('Player ' + currentPlayer + ' has Won!');
@@ -85,8 +86,5 @@ function playerHasWon(playerMoves) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  return patterns.find(x =>
-    x[0] in playerMoves &&
-    x[1] in playerMoves &&
-    x[2] in playerMoves) !== undefined;
+  return patterns.find(x => x.every(v => playerMoves.includes(v))) !== undefined;
 }
