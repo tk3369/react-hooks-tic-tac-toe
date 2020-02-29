@@ -8,7 +8,8 @@ export default function Square({index, currentPlayer, advance, winner}) {
   const [ fill, setFill ] = useState('');
 
   const handleClick = () => {
-    if (fill === '' && !winner) {  // only if the box hasn't been filled
+    // only if the box hasn't been filled and a winner hasn't been identified
+    if (fill === '' && !winner) {
       advance(index);
       setFill(currentPlayer);
     }
